@@ -68,7 +68,7 @@ def find(name: str, path: str) -> str:
 '''
 This function checks the Windows UI for all open windows and stores them in a list.
 '''
-def winEnumHandler(hwnd, ctx):
+def winEnumHandler(hwnd, ctx) -> None:
     if win32gui.IsWindowVisible(hwnd):
         open_windows.append(win32gui.GetWindowText(hwnd))
 
@@ -113,8 +113,7 @@ def check_open(part_number: str, open_parts: list) -> None:
             open = True
             break
 
-
-
+# Main Body
 if __name__ == '__main__':
 
     file_name = welcome()
@@ -128,23 +127,10 @@ if __name__ == '__main__':
         open_part(part_number)
         check_open(part_number, open_parts)
 
+    
+    """
+    Call the solidworks print macro utilizing the SOLIDWORKS API and macro file location to print each of the part drawings
+    """
     subprocess.call(print_macro_location)
     os.popen(f' \m {print_macro_location}')
     subprocess.Popen(['C:\Program Files\SOLIDWORKS Corp\SOLIDWORKS\SLDWORKS.exe', print_macro_location],shell=True)
-    
-
-
-
-
-'''
-MISC NOTES:
-'''
-    # query_string = 'partnumbers.txt'
-    # local_path = f'{desktop}' # r is raw for dealing with backslashes
-    # network_path = r'\\your\network\fold\path'
-
-    # # for a network location
-    # #subprocess.Popen(f'explorer /root,"search-ms:query={query_string}&crumb=location:{network_path}&"')
-
-    # #for a local folder
-    # subprocess.Popen(f'explorer /root,"search-ms:query={query_string}&crumb=folder:{local_path}&"')

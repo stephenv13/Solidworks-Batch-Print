@@ -7,3 +7,5 @@ SOLIDWORKS Batch Print is a executable program that pulls part numbers from a gi
 3. Run the .exe file located in /dist
 4. **Enjoy!**
 
+## Images
+![image](https://user-images.githubusercontent.com/97401431/180464186-9396a4c6-7418-4b35-9633-f21751057b5c.png)
